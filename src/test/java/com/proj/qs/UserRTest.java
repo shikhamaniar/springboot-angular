@@ -31,7 +31,7 @@ public class UserRTest {
     @Test
     public void test(){
         /*Test data retrieval*/
-        User userA = userRepository.findByName("Alice");
+        User userA = userRepository.findByEmail("Alice");
      //  assertNotNull(userA);
        assertEquals("Ddfsdf", userA.getEmail());
         /*Get all products, list should only have two*/

@@ -3,6 +3,9 @@ package com.proj.qs;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -53,6 +56,20 @@ public class UserController {
 		
 	}
 	
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+    public ResponseEntity<User> login(@RequestBody User user ) {
+		User user2 = sev.findByEmail(user.getEmail());
+		if(user2.getPassword().equals(user.getPassword())) return new ResponseEntity<User>(user2,HttpStatus.OK);
+		else return new ResponseEntity<User>(user,HttpStatus.UNAUTHORIZED);
+	
+    }
+	
+	
+
+    @RequestMapping(value ="/welcome", method = RequestMethod.GET)
+    public String welcome(Model model) {
+        return "welcome";
+    }
 	
 	
 	

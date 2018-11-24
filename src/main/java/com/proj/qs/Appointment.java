@@ -1,10 +1,18 @@
 package com.proj.qs;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -26,8 +34,36 @@ public class Appointment {
 	
 	@Column(name = "totalamt")
     float totalamt;
+	
+	
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="cid")
+    private Customer cid;
 
-     public Appointment() {
+	@OneToMany(mappedBy = "ap", cascade = CascadeType.ALL)
+	private List<ServicesBooked> sb ;
+
+ 
+	
+	public List<ServicesBooked> getSb() {
+		return sb;
+	}
+
+	public Customer getCid() {
+		return cid;
+	}
+
+	public void setCid(Customer cid) {
+		this.cid = cid;
+	}
+
+	public void setSb(List<ServicesBooked> sb) {
+		this.sb = sb;
+	}
+
+	
+	public Appointment() {
         
     }
 
