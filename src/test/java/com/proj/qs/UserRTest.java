@@ -31,9 +31,9 @@ public class UserRTest {
     @Test
     public void test(){
         /*Test data retrieval*/
-        User userA = userRepository.findByEmail("Alice");
+        User userA = userRepository.findByEmail("admin@gmail.com");
      //  assertNotNull(userA);
-       assertEquals("Ddfsdf", userA.getEmail());
+       assertEquals("admin@gmail.com", userA.getEmail());
         /*Get all products, list should only have two*/
         Iterable<User> users = userRepository.findAll();
         int count = 0;

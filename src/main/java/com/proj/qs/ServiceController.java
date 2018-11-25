@@ -27,9 +27,9 @@ public class ServiceController {
 //	}
 //	
 
-	@RequestMapping(method = RequestMethod.POST, value = "/addservice")
-	public void addName(@RequestBody Services service) {
-		sev.addservice(service);
+	@RequestMapping(method = RequestMethod.POST, value = "/addservice/{id}")
+	public void addName(@RequestBody Services service,@PathVariable int id) {
+		sev.addservice(service,id);
 
 	}
 

@@ -12,8 +12,13 @@ public class ServiceService {
 	@Autowired
 	private ServiceRepository repo;
 
-	public void addservice(Services service) {
+	@Autowired 
+	private ServiceTypeRepository serTRepo;
+	
+	public void addservice(Services service, int id) {
 		// TODO Auto-generated method stub
+		ServiceType type = serTRepo.findById(id).get();
+		service.setSt(type);
 		this.repo.save(service);
 	}
 
